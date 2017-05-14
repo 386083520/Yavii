@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg" >
+
+    <LinearLayout
+        android:id="@+id/llyt_speed"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_speed"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/text_white_16_singleLine"
+                android:text="设备" />
+
+            <TextView
+                android:id="@+id/the_number"
+                style="@style/text_blue_16_singleLine"
+                android:layout_marginTop="4.0dip"
+                android:text="1" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_line"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/text_white_16_singleLine"
+                android:text="通道"
+                android:textSize="15.0sp" />
+
+            <TextView
+                android:id="@+id/now_channel"
+                style="@style/text_blue_16_singleLine"
+                android:layout_marginTop="4.0dip"
+                android:text="01" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/bg_line"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/text_white_16_singleLine"
+                android:text="当前值"
+                android:textSize="15.0sp" />
+
+            <TextView
+                android:id="@+id/now_value"
+                style="@style/text_blue_16_singleLine"
+                android:layout_marginTop="4.0dip"
+                android:text="0" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:id="@+id/updateTimeTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/aa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llyt_speed"
+        android:layout_marginTop="1dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:id="@+id/iv_tester"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4.0dip"
+            android:contentDescription="@null"
+            android:src="@drawable/bg_tester1" />
+
+        <TextView
+            android:id="@+id/min_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_tester"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="35dip"
+            android:text="0"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/max_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_tester"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginRight="20dip"
+            android:text="40"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/iv_needle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_heart"
+            android:layout_alignRight="@+id/iv_heart"
+            android:layout_marginBottom="12.0dip"
+            android:layout_marginRight="13.0dip"
+            android:layout_marginTop="8.0dip"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_needle" />
+
+        <ImageView
+            android:id="@id/iv_heart"
+            android:layout_width="30.0dip"
+            android:layout_height="30.0dip"
+            android:layout_alignBottom="@id/iv_tester"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10.0dip"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_heart" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:layout_below="@+id/aa"
+        android:layout_marginTop="5dp"
+         >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="5dip" >
+
+                <LinearLayout
+                    android:id="@+id/btn1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonstyle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dip"
+                        android:text="通道1"
+                        android:textColor="#000000"
+                        android:textSize="20dip"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/showTv1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="3dip"
+                        android:text="0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonstyle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dip"
+                        android:text="通道2"
+                        android:textColor="#000000"
+                        android:textSize="20dip"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/showTv2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="3dip"
+                        android:text="0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonstyle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dip"
+                        android:text="通道3"
+                        android:textColor="#000000"
+                        android:textSize="20dip"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/showTv3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="3dip"
+                        android:text="0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dip" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="3dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/buttonstyle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="8dip"
+                        android:text="通道4"
+                        android:textColor="#000000"
+                        android:textSize="20dip"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/showTv4"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="3dip"
+                        android:text="0"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10dip" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="5dip" >
+
+                    <LinearLayout
+                        android:id="@+id/btn5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/buttonstyle"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical"
+                        android:paddingTop="8dip"
+                        android:visibility="gone" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:text="通道5"
+                            android:textColor="#000000"
+                            android:textSize="20dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/showTv5"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingBottom="3dip"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn6"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/buttonstyle"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="8dip"
+                            android:text="通道6"
+                            android:textColor="#000000"
+                            android:textSize="20dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/showTv6"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingBottom="3dip"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn7"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/buttonstyle"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="8dip"
+                            android:text="通道7"
+                            android:textColor="#000000"
+                            android:textSize="20dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/showTv7"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingBottom="3dip"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10dip" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn8"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dip"
+                        android:layout_weight="1"
+                        android:background="@drawable/buttonstyle"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="8dip"
+                            android:text="通道8"
+                            android:textColor="#000000"
+                            android:textSize="20dip"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/showTv8"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:paddingBottom="3dip"
+                            android:text="0"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10dip" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="86dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/control_tv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="通道0"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/control_bt1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:background="@drawable/off2"
+                            android:onClick="controller1"
+                            android:text="通道0-开"
+                            android:textColor="#00000000" />
+                        <TextView
+                            android:id="@+id/stateTv1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="离线"
+                            android:textColor="#FF0000"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="86dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/control_tv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="通道1"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/control_bt2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:background="@drawable/off2"
+                            android:onClick="controller2"
+                            android:text="通道1-开"
+                            android:textColor="#00000000" />
+                        <TextView
+                            android:id="@+id/stateTv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="离线"
+                            android:textColor="#FF0000"
+                            android:layout_gravity="center"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="right"
+        android:onClick="getWave"
+        android:text="点击获取波形"/>
+</RelativeLayout>

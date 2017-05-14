@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/bg"
+    android:layout_height="match_parent">
+    <EditText
+        android:layout_marginTop="30dp"
+        android:id="@+id/ip_et"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/login_edittext"
+        android:text="42.51.158.205"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="18dp" />
+    <Button
+        android:id="@+id/ip_sure_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/buttonstyle2"
+        android:onClick="doClick"
+        android:text="确      定"
+        android:textColor="#99CCFF"
+        android:textSize="18dp" />
+</LinearLayout>
