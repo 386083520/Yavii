@@ -8,131 +8,276 @@
    android:orientation="vertical">
 
 
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@drawable/bg"
+      android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="硬件配置助手"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="10dp"
+        android:textColor="#D4D4D4"
+        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bg"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
       <TextView
-          android:layout_width="match_parent"
+          android:id="@+id/et_ip"
+          android:layout_width="0dp"
+          android:layout_weight="5"
+          android:layout_marginLeft="30dp"
+          android:layout_gravity="center_vertical"
           android:layout_height="wrap_content"
-          android:text="硬件配置助手"
-          android:gravity="center"
-          android:textSize="20sp"
-          android:layout_margin="10dp"
-          android:textColor="#D4D4D4"
+          android:gravity="center_vertical"
+          android:textColor="#ffffff"
           />
+
+      <ImageView
+          android:id="@+id/fresh_iv"
+          android:layout_width="20dp"
+          android:layout_height="20dp"
+          android:src="@drawable/fresh3"
+          android:layout_marginRight="100dp"
+          android:onClick="fresh"
+          />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/bt_connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="连接"
+        android:textColor="#99CCFF"
+        android:background="@drawable/button"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
       <LinearLayout
-          android:layout_marginTop="10dp"
-          android:layout_width="match_parent"
+          android:layout_width="0dp"
+          android:layout_weight="5"
           android:layout_height="wrap_content"
-          android:orientation="horizontal">
-        <TextView
 
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#D4D4D4"
-            android:textSize="15sp"
-
-            android:layout_gravity="center_vertical"
-            android:text="本机IP"/>
-        <com.example.gsd.yavii.CustomEditText
-            android:id="@+id/et_ip"
-            android:layout_width="fill_parent"
-            android:layout_height="36dip"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="20dp"
+          android:orientation="vertical"
+          >
+        <LinearLayout
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:padding="5dp"
-            android:background="@drawable/bg_edittext_selector"
-            android:text=""
-            android:textSize="15dip"
-            android:drawableRight="@drawable/fresh"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_marginLeft="20dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="#D4D4D4"
+              android:textSize="15sp"
+              android:layout_gravity="center_vertical"
+              android:text="WIFI账号"/>
+
+          <EditText
+              android:id="@+id/wifi_et"
+              android:layout_width="fill_parent"
+              android:layout_height="36dip"
+              android:layout_marginLeft="8dp"
+              android:layout_marginRight="2dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
+              android:padding="5dp"
+              android:background="@drawable/bg_edittext_selector"
+              android:text="yavii"
+              android:textSize="15dip"
+              />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_marginLeft="20dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="#D4D4D4"
+              android:textSize="15sp"
+              android:layout_gravity="center_vertical"
+              android:text="密       码"/>
+
+          <EditText
+              android:id="@+id/wifi_pass_et"
+              android:layout_width="fill_parent"
+              android:layout_height="36dip"
+              android:layout_marginLeft="8dp"
+              android:layout_marginRight="2dp"
+              android:layout_marginTop="2dp"
+              android:layout_marginBottom="2dp"
+              android:padding="5dp"
+              android:background="@drawable/bg_edittext_selector"
+              android:text="yavii123"
+              android:textSize="15dip"
+              />
+        </LinearLayout>
+      </LinearLayout>
+      <Button
+          android:layout_width="100dp"
+          android:layout_height="match_parent"
+          android:padding="10dp"
+          android:layout_margin="20dp"
+          android:text="确定"
+          android:onClick="send1"
+          android:textColor="#99CCFF"
+          android:background="@drawable/button"
+          android:textSize="18sp"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+      <LinearLayout
+          android:layout_width="0dp"
+          android:layout_weight="5"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          >
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_marginLeft="20dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="#D4D4D4"
+              android:textSize="15sp"
+              android:layout_gravity="center_vertical"
+              android:text="服务器IP"/>
+          <EditText
+              android:id="@+id/service_et_ip"
+              android:layout_width="fill_parent"
+              android:layout_height="36dip"
+              android:layout_marginLeft="8dp"
+              android:layout_marginRight="2dp"
+              android:layout_marginTop="2dp"
+              android:layout_marginBottom="2dp"
+              android:padding="5dp"
+              android:background="@drawable/bg_edittext_selector"
+              android:text="192.168.0.255"
+              android:textSize="15dip"
+              />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+          <TextView
+
+              android:layout_marginLeft="20dp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:textColor="#D4D4D4"
+              android:textSize="15sp"
+
+              android:layout_gravity="center_vertical"
+              android:text="服务器端口"/>
+          <EditText
+              android:id="@+id/service_et_port"
+              android:layout_width="fill_parent"
+              android:layout_height="36dip"
+              android:layout_marginLeft="8dp"
+              android:layout_marginRight="2dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
+              android:padding="5dp"
+              android:background="@drawable/bg_edittext_selector"
+              android:text="1256"
+              android:textSize="15dip"
+              />
+        </LinearLayout>
+
+      </LinearLayout>
+
+      <Button
+          android:id="@+id/bt_sure2"
+          android:layout_width="100dp"
+          android:padding="10dp"
+          android:layout_margin="20dp"
+          android:layout_height="match_parent"
+          android:text="确定"
+          android:onClick="send2"
+          android:textColor="#99CCFF"
+          android:background="@drawable/button"
+          android:textSize="18sp"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="20dp"
+          />
       </LinearLayout>
 
 
 
-      <LinearLayout
-
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal">
-        <TextView
-
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#D4D4D4"
-            android:textSize="15sp"
-
-            android:layout_gravity="center_vertical"
-            android:text="端    口"/>
-      <EditText
-          android:id="@+id/et_port"
-          android:layout_width="fill_parent"
-          android:layout_height="36dip"
-          android:layout_marginLeft="8dp"
-          android:layout_marginRight="20dp"
-          android:layout_marginTop="10dp"
-          android:layout_marginBottom="10dp"
-          android:padding="5dp"
-          android:background="@drawable/bg_edittext_selector"
-          android:text="1256"
-          android:textSize="15dip"
-          />
-        </LinearLayout>
-      <Button
-          android:id="@+id/bt_connect"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:padding="10dp"
-          android:text="连接"
-          android:textColor="#99CCFF"
-          android:background="@drawable/button"
-          android:textSize="18sp"
-          android:layout_marginTop="10dp"
-          android:layout_marginLeft="20dp"
-          android:layout_marginRight="20dp"
-          />
-      <AutoCompleteTextView
-          android:id="@+id/et_send"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_margin="20dip"
-          android:textColor="#000000"
-          android:text="\@YAV: D298,yavii123,192.168.0.255,1256"
-          android:padding="5dp"
-          android:background="@drawable/bg_edittext_selector"
-          android:completionThreshold="1"
-          />
-      <Button
-          android:id="@+id/bt_send"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:onClick="send"
-          android:text="发送"
-          android:padding="10dp"
-          android:textColor="#99CCFF"
-          android:background="@drawable/button"
-          android:textSize="18sp"
-          android:layout_marginLeft="20dp"
-          android:layout_marginRight="20dp"
-          />
-
-  <EditText
-      android:id="@+id/et_recevier"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:padding="5dp"
-      android:layout_margin="20dip"
-      android:background="@drawable/bg_edittext_selector"
-      />
 
 
-    </LinearLayout>
+
+
+
+
+
+    <AutoCompleteTextView
+        android:id="@+id/et_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dip"
+        android:textColor="#000000"
+        android:text="\@AP:D298,yavii123"
+        android:padding="5dp"
+        android:background="@drawable/bg_edittext_selector"
+        android:completionThreshold="1"
+        />
+    <Button
+        android:id="@+id/bt_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="send"
+        android:text="发送"
+        android:padding="10dp"
+        android:textColor="#99CCFF"
+        android:background="@drawable/button"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+<EditText
+    android:id="@+id/et_recevier"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:layout_margin="10dip"
+    android:background="@drawable/bg_edittext_selector"
+    />
+
+
+  </LinearLayout>
 
 
 </LinearLayout>

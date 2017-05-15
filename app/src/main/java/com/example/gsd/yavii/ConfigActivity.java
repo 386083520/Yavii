@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +28,10 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 public class ConfigActivity extends Activity implements View.OnClickListener {
-    EditText etPort,etReceiver;
-    CustomEditText etIp;
+    EditText etReceiver,servicePort,serviceIp,wifiEt,wifiPassEt;
+    TextView etIp;
     Button btConn,btSend;
+    ImageView freshIv;
     OutputStream os;
     InputStream ips;
     Writer writer;
@@ -76,10 +78,15 @@ public class ConfigActivity extends Activity implements View.OnClickListener {
 
 
 
-        etIp= (CustomEditText) findViewById(R.id.et_ip);
-        etPort=(EditText) findViewById(R.id.et_port);
+        etIp= (TextView) findViewById(R.id.et_ip);
+        serviceIp=(EditText) findViewById(R.id.service_et_ip);
+        servicePort= (EditText) findViewById(R.id.service_et_port);
+        wifiEt= (EditText) findViewById(R.id.wifi_et);
+        wifiPassEt= (EditText) findViewById(R.id.wifi_pass_et);
         btConn=(Button) findViewById(R.id.bt_connect);
         btSend=(Button) findViewById(R.id.bt_send);
+        freshIv= (ImageView) findViewById(R.id.fresh_iv);
+        freshIv.setOnClickListener(this);
         btConn.setOnClickListener(this);
         btSend.setOnClickListener(this);
         etSend= (AutoCompleteTextView) findViewById(R.id.et_send);
@@ -101,8 +108,8 @@ public class ConfigActivity extends Activity implements View.OnClickListener {
 
     }
 
-    private void sendData() {
-        final String context=etSend.getText().toString().trim();
+    private void sendData(final String context) {
+
 
         new Thread(){
             public void run() {
@@ -127,8 +134,7 @@ public class ConfigActivity extends Activity implements View.OnClickListener {
         if(!isConnected){
             new Thread(){
                 public void run() {
-                    connectServer( etIp.getText().toString(),etPort.getText()
-                            .toString());
+                    connectServer( etIp.getText().toString(),"1256");
                 };
             }.start();
         }else{
@@ -232,11 +238,32 @@ public class ConfigActivity extends Activity implements View.OnClickListener {
 
                 break;
             case R.id.bt_send:
-                sendData();
+                String context=etSend.getText().toString().trim();
+                sendData(context);
+                break;
+            case R.id.fresh_iv:
+               GetIp getIp=new GetIp();
+                String ip = getIp.getIp(this);
+                etIp.setText(ip);
                 break;
         }
 
     }
+
+    public void send1(View v){
+        String wifi=wifiEt.getText().toString().trim();
+        String pass=wifiPassEt.getText().toString().trim();
+        String context="@AP:"+wifi+","+pass;
+        sendData(context);
+    }
+    public void send2(View v){
+        String ip=serviceIp.getText().toString().trim();
+        String port=servicePort.getText().toString().trim();
+        String context="@IP:"+ip+","+port;
+        sendData(context);
+    }
+
+
 
     @Override
     protected void onStop() {
