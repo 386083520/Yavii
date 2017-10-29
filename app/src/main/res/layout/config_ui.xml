@@ -33,6 +33,7 @@
           android:layout_gravity="center_vertical"
           android:layout_height="wrap_content"
           android:gravity="center_vertical"
+          android:layout_marginStart="100dp"
           android:textColor="#ffffff"
           />
 
@@ -84,7 +85,7 @@
               android:textColor="#D4D4D4"
               android:textSize="15sp"
               android:layout_gravity="center_vertical"
-              android:text="WIFI账号"/>
+              android:text="WIFI     账号"/>
 
           <EditText
               android:id="@+id/wifi_et"
@@ -112,7 +113,7 @@
               android:textColor="#D4D4D4"
               android:textSize="15sp"
               android:layout_gravity="center_vertical"
-              android:text="密       码"/>
+              android:text="密             码"/>
 
           <EditText
               android:id="@+id/wifi_pass_et"
@@ -130,7 +131,7 @@
         </LinearLayout>
       </LinearLayout>
       <Button
-          android:layout_width="100dp"
+          android:layout_width="60dp"
           android:layout_height="match_parent"
           android:padding="10dp"
           android:layout_margin="20dp"
@@ -169,7 +170,7 @@
               android:textColor="#D4D4D4"
               android:textSize="15sp"
               android:layout_gravity="center_vertical"
-              android:text="服务器IP"/>
+              android:text="服务器     IP"/>
           <EditText
               android:id="@+id/service_et_ip"
               android:layout_width="fill_parent"
@@ -218,7 +219,7 @@
 
       <Button
           android:id="@+id/bt_sure2"
-          android:layout_width="100dp"
+          android:layout_width="60dp"
           android:padding="10dp"
           android:layout_margin="20dp"
           android:layout_height="match_parent"

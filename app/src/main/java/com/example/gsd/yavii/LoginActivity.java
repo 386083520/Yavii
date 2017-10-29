@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,7 +36,7 @@ public class LoginActivity extends Activity {
 	String password;
 	public String result;
 	private ProgressDialog prgDialog;
-
+	SharedPreferences sp2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,6 +66,8 @@ public class LoginActivity extends Activity {
 			etPassword.setText(pass);
 			etPassword.setSelection(pass.length());
 		}
+		sp2=getSharedPreferences("myIp", Context.MODE_PRIVATE);
+		Contants.BASE_URL=sp2.getString("ip","http://42.51.158.205:8088/yavii/");
 
 	}
 

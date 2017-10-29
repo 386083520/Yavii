@@ -7,8 +7,8 @@ import com.example.gsd.yavii.ChangeIpActivity;
 
 
 public class Contants {
-
-	public static String BASE_URL = "http://42.51.158.205:8080/yavii/";
+    
+	public static String BASE_URL = "http://42.51.158.205:8088/yavii/";
 	//public static final String BASE_URL = "http://192.168.253.3:8080/yavii/";
 	public static final String LOGIN_URL = "LoginServlet?";
 	public static final String DERVICE_LIST_URL="DerviceListServlet?";

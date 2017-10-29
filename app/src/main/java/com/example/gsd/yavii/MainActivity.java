@@ -59,7 +59,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		channelId = "1";
 		isTrue=true;
 
-		
 	}
 
 

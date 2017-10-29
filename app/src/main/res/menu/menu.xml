@@ -4,12 +4,12 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	tools:context=".MainActivity">
 	<item android:id="@+id/day"
-		android:title="按天显示"
+		android:title="最近一天"
 		app:showAsAction="never" />
 	<item android:id="@+id/month"
-		android:title="按月显示"
+		android:title="最近一月"
 		app:showAsAction="never" />
 	<item android:id="@+id/year"
-		android:title="按年显示"
+		android:title="最近一小时"
 		app:showAsAction="never" />
 </menu>

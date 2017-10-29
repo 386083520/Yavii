@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/login_edittext"
-                    android:hint="用户名"
+                    android:hint="yavii"
                     android:textCursorDrawable="@drawable/color_cursor"
                     android:textSize="18dp" />
             </LinearLayout>
@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/login_edittext"
-                    android:hint="密码"
+                    android:hint="123456"
                     android:textCursorDrawable="@drawable/color_cursor"
                     android:password="true"
                     android:textSize="18dp" />
