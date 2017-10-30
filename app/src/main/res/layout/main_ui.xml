@@ -529,21 +529,24 @@
                             android:textColor="#FF0000"
                             android:layout_gravity="center"
                             />
+
                     </LinearLayout>
                 </LinearLayout>
 
             </FrameLayout>
+
         </LinearLayout>
 
     </RelativeLayout>
 
-    <TextView
-
+    <ImageView
+        android:layout_margin="20dp"
         android:layout_below="@+id/relativeLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:onClick="getWave"
-        android:text="点击获取波形"/>
+        android:background="@drawable/wave2"/>
 </RelativeLayout>

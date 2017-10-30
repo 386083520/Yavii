@@ -110,14 +110,15 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/a3" />
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="WIFI硬件配置"
-           android:layout_gravity="end"
-           android:onClick="jumpToConfig"
-           android:layout_marginTop="30dp"
-           />
-    </LinearLayout>
 
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WIFI硬件配置"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="jumpToConfig"
+
+        />
 </RelativeLayout>

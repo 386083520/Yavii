@@ -1,7 +1,5 @@
 package com.example.gsd.yavii;
 
-
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -605,6 +603,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		getChannelThread.start();
 		MyThread2 choiceChannelThread = new MyThread2();
 		choiceChannelThread.start();
+		startThread();
 	}
 	@Override
 	protected void onPause() {

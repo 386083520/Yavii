@@ -26,7 +26,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:24.1.0'
+    compile 'com.android.support:appcompat-v7:24.+'
     compile 'com.diogobernardino:williamchart:2.2'
     compile 'com.android.support:cardview-v7:24+'
     compile files('libs/android-support-v7-palette.jar')
