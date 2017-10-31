@@ -21,12 +21,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.gsd.yavii.SnappingStep.SnappingStepper;
+import com.example.gsd.yavii.SnappingStep.listener.SnappingStepperValueChangeListener;
 import com.example.gsd.yavii.utils.Contants;
 import com.example.gsd.yavii.utils.HttpUtils;
+import com.example.gsd.yavii.utils.Utils;
 
 import java.sql.Timestamp;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class MainActivity extends Activity implements OnClickListener,SnappingStepperValueChangeListener {
 	private String equipId, channelId;
 	int max,theChannelNumber;
 	float returnCapactiy;
@@ -39,8 +42,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	SharedPreferences.Editor ed;
 	SharedPreferences sp;
 	private TextView control_tv1,control_tv2,showTv1, showTv2, showTv3, showTv4, showTv5, showTv6,
-			showTv7, showTv8,stateTv1,stateTv2;
-
+			showTv7, showTv8,stateTv1;
+    private SnappingStepper stepperCustom1,stepperCustom2;
 	private TextView updateTimeTv,now_channel_button, the_equip, now_value, max_value,
 			now_channel;
 
@@ -63,7 +66,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public void initView() {
 		stateTv1= (TextView) findViewById(R.id.stateTv1);
-		stateTv2= (TextView) findViewById(R.id.stateTv2);
+
 		updateTimeTv= (TextView) findViewById(R.id.updateTimeTv);
 		control_bt1=(Button) findViewById(R.id.control_bt1);
 		control_bt2=(Button) findViewById(R.id.control_bt2);
@@ -74,7 +77,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		now_value = (TextView) findViewById(R.id.now_value);
 		max_value = (TextView) findViewById(R.id.max_value);
 		now_channel = (TextView) findViewById(R.id.now_channel);
-
+		stepperCustom1= (SnappingStepper) findViewById(R.id.stepperCustom1);
+		stepperCustom2= (SnappingStepper) findViewById(R.id.stepperCustom2);
+		stepperCustom1.setOnValueChangeListener(this);
+		stepperCustom2.setOnValueChangeListener(this);
 		btn1 = (LinearLayout) findViewById(R.id.btn1);
 		btn1.setOnClickListener(this);
 		btn2 = (LinearLayout) findViewById(R.id.btn2);
@@ -157,6 +163,38 @@ public class MainActivity extends Activity implements OnClickListener {
 		case R.id.btn8:
 			channelId = "8";
 			break;
+		}
+	}
+
+	@Override
+	public void onValueChange(View view, int value) {
+		String controlCode="";
+        switch (view.getId()){
+			case R.id.stepperCustom1:
+                //TODO
+				if(control_bt1.getText().toString().equals("通道0-关")){
+					//TODO
+					controlCode="DO=0_1000_"+(100-Integer.parseInt(String.valueOf(stepperCustom1.getValue())))*10+"_";
+					int channel=Contants.CONTROL_SUCCESS1;
+					ControlThread2 thread1=new ControlThread2(controlCode, channel);
+					thread1.start();
+				}else{
+					Utils.showToast(MainActivity.this,"无法调节亮度，请先打开开关");
+				}
+
+				break;
+			case R.id.stepperCustom2:
+				if(control_bt2.getText().toString().equals("通道1-关")){
+					//controlCode="DO=1_1000_1000_";
+					controlCode="DO=1_1000_"+(100-Integer.parseInt(String.valueOf(stepperCustom2.getValue())))*10+"_";
+					int channel2=Contants.CONTROL_SUCCESS2;
+					ControlThread2 thread2=new ControlThread2(controlCode, channel2);
+					thread2.start();
+				}else{
+					Utils.showToast(MainActivity.this,"无法调节亮度，请先打开开关");
+				}
+
+				break;
 		}
 	}
 
@@ -377,8 +415,10 @@ public class MainActivity extends Activity implements OnClickListener {
 				control_bt2.setVisibility(View.GONE);
 				control_tv1.setVisibility(View.GONE);
 				control_tv2.setVisibility(View.GONE);
-				stateTv1.setVisibility(View.GONE);
-				stateTv2.setVisibility(View.GONE);
+				//stateTv1.setVisibility(View.GONE);
+
+				stepperCustom1.setVisibility(View.GONE);
+				stepperCustom2.setVisibility(View.GONE);
 				btn5.setVisibility(View.VISIBLE);
 				btn6.setVisibility(View.VISIBLE);
 				btn7.setVisibility(View.VISIBLE);
@@ -394,7 +434,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				control_tv1.setVisibility(View.VISIBLE);
 				control_tv2.setVisibility(View.VISIBLE);
 				stateTv1.setVisibility(View.VISIBLE);
-				stateTv2.setVisibility(View.VISIBLE);
+
+				stepperCustom1.setVisibility(View.VISIBLE);
+				stepperCustom2.setVisibility(View.VISIBLE);
 			}
 			if(msg.what==111){
 				Bundle b=msg.getData();
@@ -416,7 +458,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			if(msg.what==Contants.CONTROL_SUCCESS1){
 				if(control_bt1.getText().toString().equals("通道0-开")){
 				control_bt1.setText("通道0-关");
-				
 				control_bt1.setBackgroundDrawable(MainActivity.this.getResources().getDrawable(R.drawable.on2));
 				}
 				else if(control_bt1.getText().toString().equals("通道0-关")){
@@ -457,7 +498,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			returnTime=b.getString("updateTime");
 			getTimeDis(returnTime);
 			degree = getdeDegree();
-
 			now_value.setText(returnCapactiy + "");
 			max_value.setText(max + "" + returnUnit);
 			updateTimeTv.setText("更新时间："+returnTime+"");
@@ -466,10 +506,24 @@ public class MainActivity extends Activity implements OnClickListener {
 		private float getdeDegree() {
 			switch (returnUnit) {
 			case "V":
-				degree = returnCapactiy / 220 * 180;
-
-				max = 220;
-
+				degree = returnCapactiy / 10 * 180;
+				max = 10;
+				break;
+			case "v":
+				degree = returnCapactiy / 10 * 180;
+				max = 10;
+				break;
+			case "mA":
+				degree = returnCapactiy / 20 * 180;
+				max = 20;
+				break;
+			case "dB":
+				degree = returnCapactiy / 100 * 180;
+				max = 100;
+				break;
+			case "RPM":
+				degree = returnCapactiy / 3000 * 180;
+				max = 3000;
 				break;
 			default:
 				degree = returnCapactiy / 100 * 180;
@@ -485,13 +539,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		if(timedis>10){
 			stateTv1.setText("离线");
 			stateTv1.setTextColor(Color.parseColor("#FF0000"));
-			stateTv2.setText("离线");
-			stateTv2.setTextColor(Color.parseColor("#FF0000"));
 		}else{
 			stateTv1.setText("在线");
-			stateTv1.setTextColor(Color.parseColor("#00FF00"));
-			stateTv2.setText("在线");
-			stateTv2.setTextColor(Color.parseColor("#00FF00"));
+			stateTv1.setTextColor(Color.parseColor("#0000FF00"));
+
 		}
 		return timedis;
 	}
@@ -502,12 +553,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			Toast.makeText(MainActivity.this,"请稍候",Toast.LENGTH_SHORT).show();
 		}else{
 			if(getTimeDis(returnTime)>10){
-				Toast.makeText(MainActivity.this,"您的设备已掉线，请检查硬件",Toast.LENGTH_SHORT).show();
-
+				Utils.showToast(MainActivity.this,"您的设备已掉线，请检查硬件");
 			}else{
-
 				if(control_bt1.getText().toString().equals("通道0-关")){
 					controlCode="DO=0_1000_1000_";
+					//TODO
+					//controlCode="DO=0_1000_"+Integer.parseInt(String.valueOf(stepperCustom1.getValue()))*10+"_";
 				}
 				else if(control_bt1.getText().toString().equals("通道0-开")){
 					controlCode="DO=0_1000_0_";
@@ -529,12 +580,11 @@ public class MainActivity extends Activity implements OnClickListener {
 			Toast.makeText(MainActivity.this,"请稍候",Toast.LENGTH_SHORT).show();
 		}else{
 			if(getTimeDis(returnTime)>10){
-				Toast.makeText(MainActivity.this,"您的设备已掉线，请检查硬件",Toast.LENGTH_SHORT).show();
-
+				Utils.showToast(MainActivity.this,"您的设备已掉线，请检查硬件");
 			}else{
-
 				if(control_bt2.getText().toString().equals("通道1-关")){
 					controlCode="DO=1_1000_1000_";
+					//controlCode="DO=1_1000_"+Integer.parseInt(String.valueOf(stepperCustom2.getValue()))*10+"_";
 				}
 				else if(control_bt2.getText().toString().equals("通道1-开")){
 					controlCode="DO=1_1000_0_";
@@ -579,6 +629,27 @@ public class MainActivity extends Activity implements OnClickListener {
 			handler.sendMessage(m);
     	}
     }
+
+	public class ControlThread2 extends Thread{
+		private String controlCode;
+		int channel;
+
+
+		public ControlThread2(String controlCode, int channel) {
+			super();
+			this.controlCode = controlCode;
+			this.channel = channel;
+		}
+
+
+		@Override
+		public void run() {
+			String controlString = "controlOrder=" +controlCode+ equipId;
+			String url = Contants.BASE_URL + Contants.CONTROL_URL
+					+ controlString;
+			String result = HttpUtils.getHttpGetResultForUrl(url);
+		}
+	}
 
 	public void getWave(View v){
 		ed.putString("equipId",equipId);

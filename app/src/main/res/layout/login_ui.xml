@@ -115,7 +115,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WIFI硬件配置"
+        android:text="硬件配置"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:onClick="jumpToConfig"

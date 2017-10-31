@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stepper="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg" >
@@ -79,29 +81,19 @@
                 android:text="0" />
         </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:layout_marginTop="90dp"
-        android:gravity="center"
-        android:id="@+id/updateTimeTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-
-        />
 
     <RelativeLayout
         android:id="@+id/aa"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/llyt_speed"
-        android:layout_marginTop="1dp"
         android:gravity="center" >
 
         <ImageView
             android:id="@+id/iv_tester"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4.0dip"
+            android:layout_margin="0.0dip"
             android:contentDescription="@null"
             android:src="@drawable/bg_tester1" />
 
@@ -152,10 +144,9 @@
     <RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="230dp"
+        android:layout_height="235dp"
         android:layout_below="@+id/aa"
-        android:layout_marginTop="5dp"
-         >
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -469,7 +460,7 @@
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="86dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical" >
 
@@ -489,19 +480,32 @@
                             android:onClick="controller1"
                             android:text="通道0-开"
                             android:textColor="#00000000" />
-                        <TextView
-                            android:id="@+id/stateTv1"
+
+                        <com.example.gsd.yavii.SnappingStep.SnappingStepper
+                            android:id="@+id/stepperCustom1"
+                            stepper:max="100"
+                            stepper:min="0"
+                            stepper:step="10"
+                            stepper:value="50"
                             android:layout_width="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="22dp"
+                            android:layout_marginRight="22dp"
                             android:layout_height="wrap_content"
-                            android:text="离线"
-                            android:textColor="#FF0000"
-                            android:layout_gravity="center"
+                            stepper:stepper_background="@color/colorStepperButtonNormal"
+                            stepper:stepper_leftButtonBackground="@drawable/sl_steppercustom_button_bg"
+                            stepper:stepper_rightButtonBackground="@drawable/sl_steppercustom_button_bg"
+                            stepper:stepper_contentBackground="@color/colorStepperContentBg"
+                            stepper:stepper_contentTextColor="#cfcfcf"
+                            stepper:stepper_contentTextSize="15"
+                            stepper:stepper_leftButtonResources="@drawable/ic_stepper_left"
+                            stepper:stepper_rightButtonResources="@drawable/ic_stepper_right"
                             />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="86dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical" >
 
@@ -521,15 +525,27 @@
                             android:onClick="controller2"
                             android:text="通道1-开"
                             android:textColor="#00000000" />
-                        <TextView
-                            android:id="@+id/stateTv2"
+
+
+                        <com.example.gsd.yavii.SnappingStep.SnappingStepper
+                            android:id="@+id/stepperCustom2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="离线"
-                            android:textColor="#FF0000"
-                            android:layout_gravity="center"
-                            />
-
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="22dp"
+                            android:layout_marginRight="22dp"
+                            stepper:max="100"
+                            stepper:min="0"
+                            stepper:step="10"
+                            stepper:stepper_background="@color/colorStepperButtonNormal"
+                            stepper:stepper_contentBackground="@color/colorStepperContentBg"
+                            stepper:stepper_contentTextColor="#cfcfcf"
+                            stepper:stepper_contentTextSize="15"
+                            stepper:stepper_leftButtonBackground="@drawable/sl_steppercustom_button_bg"
+                            stepper:stepper_leftButtonResources="@drawable/ic_stepper_left"
+                            stepper:stepper_rightButtonBackground="@drawable/sl_steppercustom_button_bg"
+                            stepper:stepper_rightButtonResources="@drawable/ic_stepper_right"
+                            stepper:value="50" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -538,12 +554,38 @@
         </LinearLayout>
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/updateTimeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新时间：2017-10-29 16:23:10"
+            />
+        <TextView
+            android:id="@+id/stateTv1"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="离线"
+            android:textColor="#00FF0000"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
 
     <ImageView
         android:layout_margin="20dp"
         android:layout_below="@+id/relativeLayout1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:gravity="right"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
