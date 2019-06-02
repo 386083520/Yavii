@@ -52,9 +52,9 @@ protected void onCreate(Bundle savedInstanceState) {
 
 @Override
 public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-	Toast toast=Toast.makeText(DerviceListActivity.this, "正在获取设备数据，请稍候...", Toast.LENGTH_SHORT);
+	/*Toast toast=Toast.makeText(DerviceListActivity.this, "正在获取设备数据，请稍候...", Toast.LENGTH_SHORT);
 	toast.setGravity(Gravity.CENTER,0,0);
-	toast.show();
+	toast.show();*/
 
 	String text = listView.getItemAtPosition(arg2) + "";
 	Intent myIntent = new Intent();

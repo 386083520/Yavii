@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.gsd.yavii.utils.Contants;
 import com.example.gsd.yavii.utils.HttpUtils;
+import com.tencent.stat.StatConfig;
+import com.tencent.stat.StatService;
 
 public class LoginActivity extends Activity {
 	EditText etUsername, etPassword;
@@ -41,6 +43,10 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_ui);
+		// [可选]设置是否打开debug输出，上线时请关闭，Logcat标签为"MtaSDK"
+		StatConfig.setDebugEnable(true);
+		// 基础统计API
+		StatService.registerActivityLifecycleCallbacks(this.getApplication());
 		etUsername = (EditText) findViewById(R.id.etuserName);
 		etPassword = (EditText) findViewById(R.id.etuserPassword);
 		changeIpTv= (TextView) findViewById(R.id.change_ip_tv);
@@ -117,8 +123,9 @@ public class LoginActivity extends Activity {
 	}
 
 	public void jumpToConfig(View v){
-		Intent it=new Intent(LoginActivity.this,ConfigActivity.class);
-		startActivity(it);
+		/*Intent it=new Intent(LoginActivity.this,ConfigActivity.class);
+		startActivity(it);*/
+
 	}
 
 	private Handler proHandle = new Handler() {
@@ -157,36 +164,40 @@ public class LoginActivity extends Activity {
 				break;
 
 			case Contants.LOGIN_SUCCESS:
-
+				/*Intent intent = new Intent();
+				intent.setClass(LoginActivity.this,
+						DerviceListActivity.class);
+				startActivity(intent);
+				LoginActivity.this.finish();*/
 				builder.setIcon(R.drawable.alert_ok)
-						.setTitle("登陆成功")
-						.setMessage("恭喜您，登陆成功")
-						.setPositiveButton("确定",
-								new DialogInterface.OnClickListener() {
-									// 点击确定按钮
-									public void onClick(DialogInterface dialog,
-											int which) {
-										if (chk.isChecked()) {
-											editor.putString("userName", username);
-											editor.putString("passWord", password);
-											editor.commit();
+					.setTitle("登陆成功")
+					.setMessage("恭喜您，登陆成功")
+					.setPositiveButton("确定",
+							new DialogInterface.OnClickListener() {
+								// 点击确定按钮
+								public void onClick(DialogInterface dialog,
+													int which) {
+									if (chk.isChecked()) {
+										editor.putString("userName", username);
+										editor.putString("passWord", password);
+										editor.commit();
 
-										} else {
-											
-											editor.remove("passWord");
-											editor.commit();
-										}
-										Toast.makeText(LoginActivity.this, "正在获取可以设备，请稍等...", Toast.LENGTH_LONG).show();
-										Intent intent = new Intent();
+									} else {
 
-										intent.setClass(LoginActivity.this,
-												DerviceListActivity.class);
-
-										startActivity(intent);
-
-										LoginActivity.this.finish();
+										editor.remove("passWord");
+										editor.commit();
 									}
-								}).show();
+									//Toast.makeText(LoginActivity.this, "正在获取可以设备，请稍等...", Toast.LENGTH_LONG).show();
+									Intent intent = new Intent();
+
+									intent.setClass(LoginActivity.this,
+											DerviceListActivity.class);
+
+									startActivity(intent);
+
+									LoginActivity.this.finish();
+								}
+							}).show();
 				break;
 			case Contants.OTHER_ERROR:
                 

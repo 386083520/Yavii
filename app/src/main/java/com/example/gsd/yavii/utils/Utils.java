@@ -1,6 +1,7 @@
 package com.example.gsd.yavii.utils;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.widget.Toast;
 
 /**
@@ -19,6 +20,7 @@ public class Utils {
         } else {
             toast.setText(content);
         }
+        toast.setGravity(Gravity.CENTER,0,0);
         toast.show();
     }
 

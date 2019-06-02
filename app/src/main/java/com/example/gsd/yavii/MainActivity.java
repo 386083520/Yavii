@@ -134,9 +134,9 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
 	@Override
 	public void onClick(View v) {
 
-		Toast toast=Toast.makeText(MainActivity.this, "正在获取，请稍等...", Toast.LENGTH_SHORT);
+		/*Toast toast=Toast.makeText(MainActivity.this, "正在获取，请稍等...", Toast.LENGTH_SHORT);
 		toast.setGravity(Gravity.CENTER,0,0);
-		toast.show();
+		toast.show();*/
 		switch (v.getId()) {
 		
 		case R.id.btn1:
@@ -552,7 +552,7 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
 		if(returnTime.equals("")){
 			Toast.makeText(MainActivity.this,"请稍候",Toast.LENGTH_SHORT).show();
 		}else{
-			if(getTimeDis(returnTime)>10){
+			/*if(getTimeDis(returnTime)>10){
 				Utils.showToast(MainActivity.this,"您的设备已掉线，请检查硬件");
 			}else{
 				if(control_bt1.getText().toString().equals("通道0-关")){
@@ -566,7 +566,18 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
 				int channel=Contants.CONTROL_SUCCESS1;
 				ControlThread thread=new ControlThread(controlCode, channel);
 				thread.start();
+			}*/
+			if(control_bt1.getText().toString().equals("通道0-关")){
+				controlCode="DO=0_1000_1000_";
+				//TODO
+				//controlCode="DO=0_1000_"+Integer.parseInt(String.valueOf(stepperCustom1.getValue()))*10+"_";
 			}
+			else if(control_bt1.getText().toString().equals("通道0-开")){
+				controlCode="DO=0_1000_0_";
+			}
+			int channel=Contants.CONTROL_SUCCESS1;
+			ControlThread thread=new ControlThread(controlCode, channel);
+			thread.start();
 		}
 
 
@@ -576,10 +587,9 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
     public void controller2(View v){
     	String controlCode="DO=1_1000_1000_";
 		if(returnTime.equals("")){
-
 			Toast.makeText(MainActivity.this,"请稍候",Toast.LENGTH_SHORT).show();
 		}else{
-			if(getTimeDis(returnTime)>10){
+			/*if(getTimeDis(returnTime)>10){
 				Utils.showToast(MainActivity.this,"您的设备已掉线，请检查硬件");
 			}else{
 				if(control_bt2.getText().toString().equals("通道1-关")){
@@ -592,7 +602,17 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
 				int channel=Contants.CONTROL_SUCCESS2;
 				ControlThread thread2=new ControlThread(controlCode, channel);
 				thread2.start();
-			}
+			}*/
+            if(control_bt2.getText().toString().equals("通道1-关")){
+                controlCode="DO=1_1000_1000_";
+                //controlCode="DO=1_1000_"+Integer.parseInt(String.valueOf(stepperCustom2.getValue()))*10+"_";
+            }
+            else if(control_bt2.getText().toString().equals("通道1-开")){
+                controlCode="DO=1_1000_0_";
+            }
+            int channel=Contants.CONTROL_SUCCESS2;
+            ControlThread thread2=new ControlThread(controlCode, channel);
+            thread2.start();
 		}
 
 
@@ -619,7 +639,6 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
 			Message m = new Message();
 			if ("0".equals(result))
 				m.what = Contants.CONTROL_ERROR;
-
 			else if ("1".equals(result))
 				m.what = channel;
 			else if ("exception".equals(result))
@@ -658,7 +677,9 @@ public class MainActivity extends Activity implements OnClickListener,SnappingSt
 
 		Intent it=new Intent(MainActivity.this,WaveActivity.class);
 		startActivity(it);
-		Toast.makeText(MainActivity.this,"波形显示完整之前请勿切换显示方式，否则将引起异常",Toast.LENGTH_LONG).show();
+		Toast toast=Toast.makeText(MainActivity.this, "波形显示完整之前请勿切换显示方式，否则将引起异常", Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.CENTER,0,-300);
+		toast.show();
 	}
 	
 	protected void onDestroy() {
